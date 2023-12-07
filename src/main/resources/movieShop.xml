@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<filmCatalog xmlns="http://filmcatalog.com/movies"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://filmcatalog.com/movies movieShop.xsd">
+
+    <movie id="1">
+        <title>It</title>
+        <releaseDate>1985-04-15</releaseDate>
+        <genre>Horror</genre>
+        <author>
+            <name>Stephen</name>
+            <surname>King</surname>
+            <birthDate>1947-09-21</birthDate>
+        </author>
+    </movie>
+    <movie id="2">
+        <title>Game of Thrones</title>
+        <releaseDate>1996-08-30</releaseDate>
+        <genre>Roman</genre>
+        <author>
+            <name>George</name>
+            <surname>Martin</surname>
+            <birthDate>1948-09-20</birthDate>
+        </author>
+    </movie>
+
+</filmCatalog>

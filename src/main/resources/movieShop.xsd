@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://filmcatalog.com/movies"
+           xmlns="http://filmcatalog.com/movies"
+           elementFormDefault="qualified">
+
+    <xs:element name="filmCatalog">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="movie" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:all>
+                            <xs:element name="title" type="xs:string"/>
+                            <xs:element name="releaseDate" minOccurs="0">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:date">
+                                        <xs:minInclusive value="1900-01-01"/>
+                                        <xs:maxInclusive value="2023-12-31"/>
+                                        <xs:pattern value="\d{4}-\d{2}-\d{2}"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="genre" type="genre"/>
+                            <xs:element name="author" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:all>
+                                        <xs:element name="name" type="xs:string"/>
+                                        <xs:element name="surname" type="xs:string"/>
+                                        <xs:element name="birthDate" minOccurs="0">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:date">
+                                                    <xs:minInclusive value="1800-01-01"/>
+                                                    <xs:maxInclusive value="2023-12-31"/>
+                                                    <xs:pattern value="\d{4}-\d{2}-\d{2}"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                    </xs:all>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:all>
+                        <xs:attribute name="id" type="xs:int" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="title">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="genre">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Horror"/>
+            <xs:enumeration value="Roman"/>
+            <xs:enumeration value="Action"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
