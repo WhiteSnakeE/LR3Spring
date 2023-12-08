@@ -4,5 +4,9 @@
 			<handler-name>SecurityHandler</handler-name>
 			<handler-class>com.knure.project.handler.SecurityHandler</handler-class>
 		</handler>
+		<handler>
+			<handler-name>MovieHandler</handler-name>
+			<handler-class>com.knure.project.handler.MovieHandler</handler-class>
+		</handler>
 	</handler-chain>
 </handler-chains>

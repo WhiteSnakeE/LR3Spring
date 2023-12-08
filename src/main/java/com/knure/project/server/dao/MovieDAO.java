@@ -12,7 +12,7 @@ public interface MovieDAO {
 
 	public FilmCatalog.Movie getMovieById(int item) throws DAOException;
 
-	public int addMovie(FilmCatalog.Movie movie);
+	public FilmCatalog.Movie addMovie(FilmCatalog.Movie movie);
 
 	public FilmCatalog.Movie changeMovieName(int movieI, String newName) throws DAOException;
 

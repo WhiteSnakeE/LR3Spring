@@ -18,14 +18,14 @@ import java.io.StringWriter;
 import java.util.Set;
 
 public class SecurityHandler implements SOAPHandler<SOAPMessageContext> {
-    private static final String CLIENT_TOKEN_TAG_NAME = "clientToken";
     private final Logger log = LoggerFactory.getLogger(SecurityHandler.class);
     private static final String SERVICE_TOKEN = "I_am_server";
-    private static final String SERVICE_TOKEN_NAME = "serviceToken";
     JAXBContext jaxb;
+    ObjectFactory factory;
 
     public SecurityHandler() throws JAXBException {
-        jaxb = JAXBContext.newInstance("com.knure.project.server.service");
+        factory = new ObjectFactory();
+        jaxb = JAXBContext.newInstance("com.knure.project.handler");
     }
 
     @Override
@@ -33,15 +33,7 @@ public class SecurityHandler implements SOAPHandler<SOAPMessageContext> {
         boolean outbound = (boolean) context.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY);
         boolean result = true;
         if (outbound) {
-            SOAPMessage soapMessage = context.getMessage();
-            SOAPHeader soapHeader;
-            try {
-                soapHeader = soapMessage.getSOAPHeader();
-            } catch (SOAPException e) {
-                throw new RuntimeException(e);
-            }
             log.info("Outbound message");
-            System.out.println(soapHeader.getValue());
             result = createSecurityHeader(context.getMessage());
         } else {
             log.info("Inbound message");
@@ -72,8 +64,8 @@ public class SecurityHandler implements SOAPHandler<SOAPMessageContext> {
             header.extractAllHeaderElements();
             Marshaller marshaller = jaxb.createMarshaller();
             marshaller.setProperty("jaxb.fragment", true);
-            marshaller.marshal(new JAXBElement<String>(
-                    new QName("http://service.server.project.knure.com/", SERVICE_TOKEN_NAME), String.class, SERVICE_TOKEN), header);
+            SecurityHeader sh = new SecurityHeader(SERVICE_TOKEN);
+            marshaller.marshal(factory.createServerToken(sh), header);
             message.saveChanges();
             log.info("Service token: {}", toString(header));
         } catch (SOAPException | JAXBException e) {
@@ -87,12 +79,10 @@ public class SecurityHandler implements SOAPHandler<SOAPMessageContext> {
 
     private boolean checkSecurityHeader(SOAPMessage message) {
         try {
-            QName clientTokenQName = new QName("http://service.server.project.knure.com/", CLIENT_TOKEN_TAG_NAME);
             SOAPHeader header = message.getSOAPPart().getEnvelope().getHeader();
             Unmarshaller unmarshaller = jaxb.createUnmarshaller();
-            Node childElements = header.getChildElements(clientTokenQName).next();
-            JAXBElement<String> sh = unmarshaller.unmarshal(childElements, String.class);
-            return isValidToken(sh.getValue());
+            JAXBElement<SecurityHeader> sh = unmarshaller.unmarshal(header.getFirstChild(), SecurityHeader.class);
+            return isValidToken(sh.getValue().getToken());
         } catch (Exception e) {
             String faultString = "Client token not found";
             log.error(faultString);
@@ -141,4 +131,5 @@ public class SecurityHandler implements SOAPHandler<SOAPMessageContext> {
         }
         return stringResult.toString().replaceFirst("<\\?xml.+\\?>", "");
     }
+
 }

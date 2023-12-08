@@ -1,0 +1,17 @@
+
+µ
+java:S6548"˜A Singleton implementation was detected. Make sure the use of the Singleton pattern is required and the implementation is the right one for the context.(§„Ÿ=8¢ü•¨Ä1
+I
+java:S1874j",Remove this use of "Date"; it is deprecated.(¸‡°8­ü•¨Ä1
+N
+java:S1874l",Remove this use of "Date"; it is deprecated.(‘½„Ôÿÿÿÿÿ8­ü•¨Ä1
+I
+java:S1874m",Remove this use of "Date"; it is deprecated.(¥òñÄ8­ü•¨Ä1
+N
+java:S1874o",Remove this use of "Date"; it is deprecated.(‘½„Ôÿÿÿÿÿ8®ü•¨Ä1
+I
+java:S1874p",Remove this use of "Date"; it is deprecated.(°°ÏÂ8®ü•¨Ä1
+N
+java:S1874r",Remove this use of "Date"; it is deprecated.(‚ôìİùÿÿÿÿ8«Š™¨Ä1
+R
+java:S1128	"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ8µûäÎÄ1

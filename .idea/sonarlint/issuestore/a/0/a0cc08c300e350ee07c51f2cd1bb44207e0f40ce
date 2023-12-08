@@ -1,0 +1,23 @@
+
+]	java:S125"<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8îÚ£ÇÄ1
+c
+java:S1128"ARemove this unused import 'com.knure.project.entity.FilmCatalog'.(ÚŞŞ½øÿÿÿÿ8îÚ£ÇÄ1
+]
+java:S1128";Remove this unused import 'com.knure.project.entity.Genre'.(÷ü€ûüÿÿÿÿ8îÚ£ÇÄ1
+g
+java:S1128"JRemove this unused import 'com.knure.project.server.service.MovieService'.(„¨µ8îÚ£ÇÄ1
+X
+java:S1128"6Remove this unused import 'javax.xml.namespace.QName'.(•·ï½üÿÿÿÿ8ïÚ£ÇÄ1
+M
+java:S1128"0Remove this unused import 'javax.xml.ws.Holder'.(°Ôù¾8ïÚ£ÇÄ1
+S
+java:S1128	"1Remove this unused import 'javax.xml.ws.Service'.(¬ŒòÓøÿÿÿÿ8ïÚ£ÇÄ1
+K
+java:S1128
+")Remove this unused import 'java.net.URL'.(ñìÁ„üÿÿÿÿ8ïÚ£ÇÄ1
+L
+java:S1128"/Remove this unused import 'java.util.Calendar'.(ÿÛö´8ïÚ£ÇÄ1
+H
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8ïÚ£ÇÄ1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ïÚ£ÇÄ1

@@ -2,6 +2,7 @@ package com.knure.project.server.service;
 
 
 import com.knure.project.entity.FilmCatalog;
+import com.knure.project.handler.SecurityHeader;
 import com.knure.project.server.dao.DAOException;
 
 import javax.jws.WebMethod;
@@ -15,24 +16,24 @@ import java.util.List;
 public interface MovieService {
 
 	@WebMethod()
-	@WebResult(targetNamespace="http://filmcatalog.com/movies")
+	@WebResult(targetNamespace="http://service.server.project.knure.com/")
 	public FilmCatalog.Movie getMovieById(@WebParam(name="id", header = true)int id) throws DAOException;
 
 	@WebMethod()
-	public int addMovie(@WebParam(name="movie",  targetNamespace="http://filmcatalog.com/movies")FilmCatalog.Movie book) throws DAOException;
+	public FilmCatalog.Movie addMovie(@WebParam(name="movie",  targetNamespace="http://service.server.project.knure.com/")FilmCatalog.Movie book) throws DAOException;
 	
-	@WebMethod()
-	@WebResult(targetNamespace="http://filmcatalog.com/movies")
+	@WebMethod(operationName = "removeMovie")
+	@WebResult(targetNamespace="http://service.server.project.knure.com/")
 	public FilmCatalog.Movie removeMovie(@WebParam(name="id",header = true) int id,
-										 @WebParam(name="clientToken", header = true) String clientToken,
+										 @WebParam(name="clientToken", header = true) SecurityHeader clientToken,
 										 @WebParam(name="serverToken", header = true, mode = WebParam.Mode.OUT)
-											 Holder<String> serverToken) throws DAOException;
+											 Holder<SecurityHeader> serverToken) throws DAOException;
 
 	@WebMethod()
-	@WebResult(targetNamespace="http://filmcatalog.com/movies")
+	@WebResult(targetNamespace="http://service.server.project.knure.com/")
 	public List<FilmCatalog.Movie> getAllMoviesByAuthor(@WebParam(name="author",header = true)FilmCatalog.Movie.Author author);
 	@WebMethod()
-	@WebResult(targetNamespace="http://filmcatalog.com/movies")
+	@WebResult(targetNamespace="http://service.server.project.knure.com/")
 	public FilmCatalog.Movie changeMovieName(@WebParam(name="movieID", header = true)int movieId,@WebParam(name="newName") String newName) throws DAOException;
 
 }

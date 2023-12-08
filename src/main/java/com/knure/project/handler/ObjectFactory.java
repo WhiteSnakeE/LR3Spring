@@ -30,6 +30,40 @@ import javax.xml.namespace.QName;
 
 public class ObjectFactory {
 
+    private static final QName _ServerToken_QNAME = new QName("http://service.server.project.knure.com/", "serverToken");
+    private static final QName _ClientToken_QNAME = new QName("http://service.server.project.knure.com/", "clientToken");
 
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: app
+     *
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link SecurityHeader }
+     *
+     */
+    public SecurityHeader createSecurityHeader() {
+        return new SecurityHeader();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SecurityHeader }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "http://service.server.project.knure.com/", name = "serverToken")
+    public JAXBElement<SecurityHeader> createServerToken(SecurityHeader value) {
+        return new JAXBElement<SecurityHeader>(_ServerToken_QNAME, SecurityHeader.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link SecurityHeader }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "http://service.server.project.knure.com/", name = "clientToken")
+    public JAXBElement<SecurityHeader> createClientToken(SecurityHeader value) {
+        return new JAXBElement<SecurityHeader>(_ClientToken_QNAME, SecurityHeader.class, null, value);
+    }
 
 }

@@ -54,7 +54,8 @@ public class MovieDAOInMemoryImpl implements MovieDAO {
     }
 
     @Override
-    public int addMovie(FilmCatalog.Movie movie) {
+    public FilmCatalog.Movie addMovie(FilmCatalog.Movie movie) {
+        System.out.println("FDFDFDF" + movie.toString());
         int id = movieDBTable.insert(movie);
         movie.setId(id);
         try {
@@ -62,7 +63,7 @@ public class MovieDAOInMemoryImpl implements MovieDAO {
         } catch (SQLException e) {
             // do nothing, always exist
         }
-        return id;
+        return movie;
     }
 
     @Override
